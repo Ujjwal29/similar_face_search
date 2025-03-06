@@ -79,11 +79,11 @@ def find_matching_dog_faces_yolo(query_image_path, database_dir, net, classes):
 def copy_matching_images(matching_images, output_dir):
     """Copies images with matching dog faces to a new directory."""
     os.makedirs(output_dir, exist_ok=True)
-    for image_path in tqdm(matching_images, desc="Copying matching images"):
+    for matching_image_path in tqdm(matching_images, desc="Copying matching images"):
         try:
-            shutil.copy2(image_path, output_dir)
+            shutil.copy2(matching_image_path, output_dir)
         except Exception as e:
-            print(f"Error copying {image_path}: {e}")
+            print(f"Error copying {matching_image_path}: {e}")
 
 def main():
     """Main function to execute dog face matching and copying using YOLO, recursively searching subdirectories."""
